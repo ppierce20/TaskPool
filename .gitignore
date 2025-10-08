@@ -1,0 +1,6 @@
+*.dll
+\bin
+\.vs
+\obj
+*.exe
+*.user
