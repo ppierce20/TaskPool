@@ -20,7 +20,7 @@ namespace TaskPool
             taskPoolFactory.AddWork(40);
             Console.WriteLine($"taskPoolFactory - Adding Work (40)");
 
-            while (taskPoolFactory.GetWorkers().Any(worker => worker.Working) || !taskPoolFactory.WorkQueueEmpty)
+            while (taskPoolFactory.GetWorkers().Any(worker => worker.Working) || !(taskPoolFactory.GetWorkQueueCount() == 0))
             {
                 Console.WriteLine($"taskPoolFactory - Working...");
                 Thread.Sleep(500);
@@ -45,7 +45,7 @@ namespace TaskPool
             Console.WriteLine($"URLPoolFactory - Adding Work (https://www.example.edu/)");
 
             // In this example we have 4 URLs to process and a max of 3 workers so one URL will wait until a worker is free
-            while (URLPoolFactory.GetWorkers().Any(worker => worker.Working) || !URLPoolFactory.WorkQueueEmpty)
+            while (URLPoolFactory.GetWorkers().Any(worker => worker.Working) || !(URLPoolFactory.GetWorkQueueCount() == 0))
             {
                 Console.WriteLine($"URLPoolFactory - Working...");
                 Thread.Sleep(500);
